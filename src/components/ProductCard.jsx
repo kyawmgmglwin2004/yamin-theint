@@ -1,12 +1,25 @@
 export default function ProductCard({ product }) {
-  return <article className="group">
-    <div className="relative aspect-[1/1.1] overflow-hidden bg-[#ead8c6]">
-      <img className="size-full object-cover saturate-[.6] transition-transform duration-500 group-hover:scale-105" src={product.image} alt={product.name} />
-      <span className="absolute left-4 top-4 border border-[#a56c3f] px-2 py-1.5 text-[9px] uppercase tracking-[.12em] text-[#a56c3f]">{product.featured ? 'Bestseller' : 'New ritual'}</span>
-    </div>
-    <div className="flex justify-between gap-5 py-[18px]">
-      <div><h3 className="mb-1.5 font-sans text-xl font-medium text-[#4b3023]">{product.name}</h3><p className="text-[11px] text-[#8d7565]">{product.type}</p></div>
-      <strong className="text-[11px] font-normal text-[#8d7565]">{product.price}</strong>
-    </div>
-  </article>
+  return (
+    <article className="group cursor-pointer">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[var(--color-bg-primary)] border border-[var(--color-border-subtle)]">
+        <img
+          className="size-full object-cover grayscale-[30%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+          src={product.image}
+          alt={product.name}
+        />
+        {product.featured && (
+          <span className="absolute left-5 top-5 border border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)]/80 backdrop-blur-sm px-3 py-1.5 text-[9px] uppercase tracking-[.15em] text-[var(--color-text-primary)]">
+            Bestseller
+          </span>
+        )}
+      </div>
+      <div className="flex justify-between items-start gap-5 py-6">
+        <div>
+          <h3 className="mb-2 font-serif text-2xl font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">{product.name}</h3>
+          <p className="text-xs uppercase tracking-widest text-[var(--color-text-muted)]">{product.type}</p>
+        </div>
+        <strong className="text-xs font-medium text-[var(--color-text-primary)]">{product.price}</strong>
+      </div>
+    </article>
+  )
 }

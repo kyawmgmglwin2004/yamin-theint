@@ -3,7 +3,7 @@ export const products = [
     name: 'Organic Coffee Scrub',
     type: 'Exfoliating body treatment',
     price: '$28.00',
-    image: '/coffee_scrub.jpg',
+    image: '/yamin-product1.jpeg',
     featured: true,
   },
   {
@@ -23,6 +23,14 @@ export const products = [
     type: 'Balancing skin prep',
     price: '$24.00',
     image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=85',
+  },
+
+  {
+    name: 'Organic Coffee Scrub',
+    type: 'Exfoliating body treatment',
+    price: '$28.00',
+    image: '/coffee_scrub.jpg',
+    featured: true,
   },
   {
     name: 'Hydrating Serum',

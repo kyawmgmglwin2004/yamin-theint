@@ -5,6 +5,9 @@ import { products } from '../data/products'
 import heroImage from '../assets/yamin-hero1.jpeg'
 import productImg from '../assets/hero_img_2.jpg'
 import product1Img from '../assets/yamin-product1.jpeg'
+import coffeeScrubFlatlay from '../assets/coffee-scrub-flatlay.jpg'
+import heroMobile1 from '../assets/hero_mobile_4.jpg'
+import heroMobile2 from '../assets/hero_mobile_3.jpg'
 import p1 from '../assets/p1.jpg'
 import p2 from '../assets/p5.jpg'
 import p3 from '../assets/p3.jpg'
@@ -20,7 +23,11 @@ const HERO_SLIDES = [
     titleAccent: 'Ritual.',
     subtitle: 'Deep Radiance Restorative Body Care',
     desc: 'A velvety blend of cold-pressed oils engineered to lock in moisture and leave a subtle, sun-kissed golden shimmer on your skin.',
-    image: productImg,
+    image: product1Img,
+    mobileImage: heroMobile1,
+    mobileTitle: 'Coffee',
+    mobileAccent: 'Scrub.',
+    mobileDesc: 'သဘာဝ ကော်ဖီမှုန့်ဖြင့် အသားအရေကို နူးညံ့ ချောမွေ့စေသည်',
   },
   {
     tagline: 'Yamin Glow Lab ',
@@ -29,6 +36,10 @@ const HERO_SLIDES = [
     subtitle: 'Exfoliating & Nourishing Body Treatment',
     desc: 'Infused with organic Arabica coffee grounds, golden jojoba oil, and antioxidant-rich botanical extracts for silky smooth radiance.',
     image: heroImage,
+    mobileImage: heroMobile2,
+    mobileTitle: 'Glow',
+    mobileAccent: 'Skin.',
+    mobileDesc: 'တောက်ပ ဝင်းလက်တဲ့ အသားအရေအတွက် Yamin Coffee Scrub',
   },
 ]
 
@@ -92,17 +103,24 @@ export default function Home() {
   return (
     <>
       {/* ── HERO CAROUSEL ── */}
-      <section className="relative isolate flex min-h-[90vh] items-center overflow-hidden">
+      <section className="relative isolate flex min-h-[70vh] sm:min-h-[90vh] items-center overflow-hidden">
+        {/* Desktop hero bg */}
         <div
-          className="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-1000"
+          className="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-1000 hidden sm:block"
           style={{ backgroundImage: `url(${slide.image})` }}
+        />
+        {/* Mobile hero bg */}
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-1000 block sm:hidden"
+          style={{ backgroundImage: `url(${slide.mobileImage})` }}
         />
         {/* Gradients */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1a1412]/85 via-[#1a1412]/50 to-transparent" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1a1412]/60 via-transparent to-transparent" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[8vw] py-28">
-          <div className="max-w-[540px] space-y-6" style={{ animation: 'fadeIn .9s ease-out both' }}>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-[8vw] py-16 sm:py-28">
+          {/* ── Desktop hero content ── */}
+          <div className="hidden sm:block max-w-[540px] space-y-6" style={{ animation: 'fadeIn .9s ease-out both' }}>
             {/* Tagline badge */}
             <div
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] uppercase tracking-[.25em] font-semibold text-[#e5c5b5] backdrop-blur-md"
@@ -118,7 +136,7 @@ export default function Home() {
                 {slide.title}<br />
                 <em className="italic text-[#e5c5b5]">{slide.titleAccent}</em>
               </h1>
-              <p className="mt-2 font-serif text-lg italic text-[#e5c5b5] font-light sm:text-xl">
+              <p className="mt-2 font-serif text-xl italic text-[#e5c5b5] font-light">
                 {slide.subtitle}
               </p>
             </div>
@@ -155,10 +173,37 @@ export default function Home() {
               </span>
             </div>
           </div>
+
+          {/* ── Mobile hero content — Top Header + Bottom CTA ── */}
+          <div className="sm:hidden absolute inset-0 z-10 flex flex-col justify-between p-5 pointer-events-none">
+            {/* Top text area */}
+            <div
+              className="pt-6 pointer-events-auto"
+              style={{ animation: 'fadeIn .9s ease-out both' }}
+            >
+              <h1 className="font-serif text-[26px] font-light leading-snug text-white drop-shadow-md">
+                {slide.mobileTitle}<br />
+                <em className="italic text-[#e5c5b5]">{slide.mobileAccent}</em>
+              </h1>
+              <p className="mt-1 text-xs leading-relaxed text-[#e2d4cd] font-light max-w-[260px] drop-shadow">
+                {slide.mobileDesc}
+              </p>
+            </div>
+
+            {/* Bottom CTA button area */}
+            <div
+              className="pb-12 pt-3 pointer-events-auto"
+              style={{ animation: 'fadeIn .9s .2s ease-out both' }}
+            >
+              <Button to="/products" className="w-full justify-center py-3 text-sm">
+                ဝယ်ယူမည်
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Carousel pagination */}
-        <div className="absolute bottom-8 right-8 z-20 flex items-center gap-3 rounded-full border border-white/10 bg-[#1a1412]/40 px-4 py-2.5 backdrop-blur-md">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:bottom-8 sm:right-8 z-20 flex items-center gap-3 rounded-full border border-white/10 bg-[#1a1412]/40 px-4 py-2.5 backdrop-blur-md">
           {HERO_SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -218,13 +263,13 @@ export default function Home() {
 
           {/* Image */}
           <div className="relative lg:col-span-7" style={{ animation: 'scaleIn .8s .1s ease-out both' }}>
-            <div className="relative overflow-hidden rounded-2xl border border-[#e1d2c2] bg-[#e5c5b5]/30 p-3 shadow-2xl">
+            <div className="relative overflow-hidden border border-[#e1d2c2] bg-[#e5c5b5]/30 p-3 shadow-2xl">
               <img
-                src="/images/coffee-scrub-flatlay.jpg"
+                src={coffeeScrubFlatlay}
                 alt="Coffee scrub ingredients flat lay"
-                className="h-[450px] w-full rounded-xl object-cover"
+                className="h-[450px] w-full object-cover"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-[#1a1412]/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1412]/70 via-transparent to-transparent" />
               {/* Floating info */}
               <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-white">
                 <div>
@@ -254,10 +299,10 @@ export default function Home() {
             <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-[#d3ac9b] font-semibold">
               Yamin Glow Lab · Coffee Scrub
             </p>
-            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-normal leading-[1.15] text-white mb-4">
+            <h2 className="font-serif text-[clamp(25px,4vw,48px)] font-normal leading-[1.15] text-white mb-4">
               Dead Cells များကို ဖယ်ရှားပေးပြီး
             </h2>
-            <p className="font-serif text-[clamp(24px,3.5vw,40px)] italic text-[#d3ac9b] leading-[1.2]">
+            <p className="font-serif text-[clamp(20px,3.5vw,40px)] italic text-[#d3ac9b] leading-[1.2]">
               နူးညံ့ချောမွေ့တဲ့ Glow Skin ကို ရယူပါ
             </p>
             <p className="mt-6 mx-auto max-w-lg text-sm text-[#a89286] font-light leading-relaxed">
@@ -328,7 +373,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-[#332620] bg-[#231a15]">
+            <div className="group relative overflow-hidden border border-[#332620] bg-[#231a15]">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={p2}
@@ -354,7 +399,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-[#332620] bg-[#231a15]">
+            <div className="group relative overflow-hidden border border-[#332620] bg-[#231a15]">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={p3}
@@ -380,7 +425,7 @@ export default function Home() {
             </div>
 
             {/* Card 4 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-[#332620] bg-[#231a15]">
+            <div className="group relative overflow-hidden border border-[#332620] bg-[#231a15]">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={p4}
@@ -429,7 +474,7 @@ export default function Home() {
 
             {/* Product image + details */}
             <div className="group relative" style={{ animation: 'scaleIn .8s ease-out both' }}>
-              <div className="aspect-square overflow-hidden rounded-2xl border border-[#e1d2c2] bg-[#ede4d8]">
+              <div className="aspect-square overflow-hidden border border-[#e1d2c2] bg-[#ede4d8]">
                 <img
                   src={product1Img}
                   alt="Yamin Coffee Scrub"
@@ -513,7 +558,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto max-w-xl rounded-2xl border border-[#e1d2c2] bg-white p-6 shadow-xl sm:p-8">
+          <div className="mx-auto max-w-xl border border-[#e1d2c2] bg-white p-6 shadow-xl sm:p-8">
             <form onSubmit={handleVerify} className="space-y-4">
               <label className="block text-[10px] uppercase tracking-[.2em] text-[#3b2010] font-medium">
                 Enter Batch / Security Code
@@ -524,12 +569,12 @@ export default function Home() {
                   placeholder="e.g., YT-2026-088B"
                   value={verifyCode}
                   onChange={(e) => setVerifyCode(e.target.value)}
-                  className="flex-1 rounded-xl border border-[#e1d2c2] bg-[#FAF9F6] px-4 py-3.5 text-sm font-mono uppercase tracking-wider placeholder:text-[var(--color-text-muted)]/50 focus:border-[#9b6d42] focus:outline-none transition-colors"
+                  className="flex-1 border border-[#e1d2c2] bg-[#FAF9F6] px-4 py-3.5 text-sm font-mono uppercase tracking-wider placeholder:text-[var(--color-text-muted)]/50 focus:border-[#9b6d42] focus:outline-none transition-colors"
                 />
                 <button
                   type="submit"
                   disabled={isVerifying}
-                  className="flex items-center gap-2 rounded-xl bg-[#3b2010] px-6 py-3.5 text-[10px] uppercase tracking-[.2em] font-medium text-white transition-colors hover:bg-[#9b6d42] disabled:opacity-50"
+                  className="flex items-center gap-2 bg-[#3b2010] px-6 py-3.5 text-[10px] uppercase tracking-[.2em] font-medium text-white transition-colors hover:bg-[#9b6d42] disabled:opacity-50"
                 >
                   {isVerifying ? (
                     <span style={{ animation: 'spin 1s linear infinite', display: 'inline-block' }}>✦</span>
@@ -626,7 +671,7 @@ export default function Home() {
           </div>
 
           {/* Product grid */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4">
             {SHOWCASE_PRODUCTS.map(({ img, name, price }, i) => (
               <div
                 key={i}
@@ -634,7 +679,7 @@ export default function Home() {
                 style={{ animation: `fadeIn .7s ${i * 0.08}s ease-out both` }}
               >
                 {/* Image card */}
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#e1d2c2] bg-[#ede4d8]">
+                <div className="relative aspect-[4/5] overflow-hidden border border-[#e1d2c2] bg-[#ede4d8]">
                   <img
                     src={img}
                     alt={name}

@@ -1,21 +1,22 @@
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
+import packagingImg from '../assets/coffee-scrub-flatlay.jpg'
 
 export default function Products() {
   return (
-    <div className="bg-[var(--color-bg-primary)] px-[8vw] py-16">
+    <div className="bg-[var(--color-bg-primary)] px-4 sm:px-[8vw] py-10 sm:py-16">
       
       {/* Products Grid First */}
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4 lg:gap-10">
         {products.map((product) => <ProductCard key={product.name} product={product} />)}
       </div>
       
       {/* Bottom Section */}
       <section className="mt-24 grid gap-16 border-t border-[var(--color-border-subtle)] pt-24 md:mt-32 md:grid-cols-2 md:items-center">
-        <div className="order-2 md:order-1 relative rounded-[2rem] overflow-hidden group shadow-sm">
+        <div className="order-2 md:order-1 relative overflow-hidden group shadow-sm">
           <div className="aspect-[4/3] w-full bg-[#f8f8f8]">
              <img 
-                src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=80" 
+                src={packagingImg} 
                 alt="Sustainable Packaging" 
                 className="w-full h-full object-cover transition-transform duration-[15s] ease-out group-hover:scale-110 grayscale-[15%] group-hover:grayscale-0" 
              />

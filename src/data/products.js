@@ -1,69 +1,81 @@
+import product1Img from '../assets/yamin-product1.jpeg'
+import velvetBodyOil from '../assets/velvet_body_oil.jpg'
+import coffeeScrub from '../assets/coffee_scrub.jpg'
+import nightCream from '../assets/night_cream.jpg'
+import pureBotanicals from '../assets/pure_botanicals.jpg'
+import skincare from '../assets/skincare_texture.jpg'
+import earthMinerals from '../assets/earth_minerals.jpg'
+import p6 from '../assets/p6.jpg'
+import p7 from '../assets/p7.jpg'
+import heroImg from '../assets/Hero_img.jpg'
+
 export const products = [
   {
     name: 'Organic Coffee Scrub',
     type: 'Exfoliating body treatment',
     price: '$28.00',
-    image: '/yamin-product1.jpeg',
+    image: product1Img,
     featured: true,
   },
   {
     name: 'Velvet Body Oil',
     type: 'Nourishing botanical oil',
     price: '$34.00',
-    image: '/velvet_body_oil.jpg',
+    image: velvetBodyOil,
   },
   {
     name: 'Cloud Cleanse',
     type: 'Gentle daily wash',
     price: '$22.00',
-    image: 'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=85',
+    image: pureBotanicals,
   },
   {
     name: 'Botanical Toner',
     type: 'Balancing skin prep',
     price: '$24.00',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=85',
+    image: skincare,
   },
 
   {
-    name: 'Organic Coffee Scrub',
+    name: 'Coffee Scrub — Daily',
     type: 'Exfoliating body treatment',
     price: '$28.00',
-    image: '/coffee_scrub.jpg',
+    image: coffeeScrub,
     featured: true,
   },
   {
     name: 'Hydrating Serum',
     type: 'Hyaluronic acid treatment',
     price: '$42.00',
-    image: 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=900&q=85',
+    image: earthMinerals,
     featured: true,
   },
   {
     name: 'Repair Night Cream',
     type: 'Deep cellular hydration',
     price: '$48.00',
-    image: '/night_cream.jpg',
+    image: nightCream,
   },
   {
     name: 'Luminous Foundation',
     type: 'Breathable skin tint',
     price: '$38.00',
-    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85',
+    image: p6,
   },
   {
     name: 'Rose Lip Tint',
     type: 'Nourishing sheer color',
     price: '$18.00',
-    image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=85',
+    image: p7,
   },
   {
     name: 'Mineral Sunscreen',
     type: 'Broad spectrum SPF 30',
     price: '$32.00',
-    image: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=900&q=85',
+    image: heroImg,
   },
 ]
+
 
 export const navigation = [
   ['/', 'Home'],
